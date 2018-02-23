@@ -23,13 +23,6 @@ public class Request {
     
     public Request() {
     }
-
-    public Request(String filePath, int conNum, String fullContent, String Exstention) {
-        this.filepath = filePath;
-        this.contentNum = conNum;
-        this.fullContent = fullContent;
-        this.Exstention = Exstention;
-    }
          
     public Request request(BufferedReader reader) throws IOException {
         StringBuilder strB = new StringBuilder();
@@ -79,5 +72,12 @@ public class Request {
             }
         }
         return new Request(filepath, contentNum, fullContent, Exstention);
+    }
+    
+    public Request(String filePath, int conNum, String fullContent, String Exstention) {
+        this.filepath = filePath;
+        this.contentNum = conNum;
+        this.fullContent = fullContent;
+        this.Exstention = Exstention;
     }
 }
