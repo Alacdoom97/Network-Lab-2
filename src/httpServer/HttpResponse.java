@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 public class HttpResponse {
 
 	String response;
-	String filePath = "C:/Users/Sevajper/Desktop/Java Workspace/Network-Lab-2-master/src/httpServer";
+	String filePath = "C:/Users/Sevajper/Desktop/Java Workspace/Network-Lab-2-master/src/";
 	HttpRequest hReq;
 
 	public HttpResponse(HttpRequest hReq) {
