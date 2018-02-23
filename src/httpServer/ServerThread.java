@@ -7,11 +7,9 @@ package httpServer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.stream.Collectors;
 
 /**
  *
@@ -26,6 +24,7 @@ public class ServerThread extends Thread {
     private InputStreamReader streamIn;
     private PrintWriter write;
     private BufferedReader read;
+    private Request req;
 
     public ServerThread(Socket socket, int identity) {
         soc = socket;
@@ -38,7 +37,11 @@ public class ServerThread extends Thread {
         try {
             streamIn = new InputStreamReader(soc.getInputStream());
             read = new BufferedReader(streamIn);
-            String line = read.readLine();
+            req = new Request().request(read);
+            
+            
+            
+           /* 
             while (!line.isEmpty()) {
                 System.out.println(line);
                 line = read.readLine();
@@ -52,10 +55,10 @@ public class ServerThread extends Thread {
             String s = new BufferedReader(new InputStreamReader(in))
             .lines().collect(Collectors.joining("\n"));
             out.println(s);
-            /*In this line I used out.println("full html code"); but I'd like a 
-            simpler way where it can search for the html file in the directory and send it.*/
+            In this line I used out.println("full html code"); but I'd like a 
+            simpler way where it can search for the html file in the directory and send it.
             out.flush();
-            out.close();
+            out.close();*/
             soc.close();
         } catch (IOException e) {
             System.out.println("Esteban wtf are you doing?!");
