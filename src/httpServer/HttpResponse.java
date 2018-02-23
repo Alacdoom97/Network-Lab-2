@@ -12,16 +12,21 @@ public class HttpResponse {
 
 	public HttpResponse(HttpRequest hReq) {
 		this.hReq = hReq;
-		File file = new File(filePath + hReq.fileName);
-
+		getResponse();
+	}
+	
+	public void getResponse () {
 		try {
+			File file = new File(filePath + hReq.fileName);
+			
+			@SuppressWarnings("resource")
 			FileInputStream input = new FileInputStream(file);
+		
 			response = "HTTP/1.1 200 \r\n";
 			response += "Server: Our Java Server \r\n";
-			response += "Content-Type: text/html \r\n";
+			response += "Content-Type: image/png \r\n";
 			response += "Content-Length: " + file.length() + " \r\n";
 			response += "\r\n";
-
 			int s;
 
 			while ((s = input.read()) != -1) {

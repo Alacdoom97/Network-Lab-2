@@ -1,6 +1,5 @@
 package httpServer;
 
-import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -10,13 +9,12 @@ public class Server {
     
 	public static void main(String[] args) throws Exception {
 		
-            ServerSocket sSocket = new ServerSocket(MYPORT);
-            int ID = 0;
-            
+            @SuppressWarnings("resource")
+			ServerSocket sSocket = new ServerSocket(MYPORT);
             while (true) {
                 Socket soc = sSocket.accept();
-                ServerThread serverThread = new ServerThread(soc, ++ID);
-                serverThread.run();
+                ServerThread serverThread = new ServerThread(soc);
+                serverThread.start();
             }
             
 	}

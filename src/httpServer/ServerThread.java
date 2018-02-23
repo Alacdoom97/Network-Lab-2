@@ -2,20 +2,17 @@
 package httpServer;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class ServerThread implements Runnable {
-	private static int ID;
+public class ServerThread extends Thread {
 	private Socket soc;
-	PrintWriter pw;
-	BufferedReader br;
+	private PrintWriter pw;
+	private BufferedReader br;
 
-	public ServerThread(Socket socket, int identity) throws Exception {
+	public ServerThread(Socket socket) throws Exception {
 		soc = socket;
-		ID = identity;
 		br = new BufferedReader(new InputStreamReader(soc.getInputStream()));
 		pw = new PrintWriter(soc.getOutputStream());
 	}
