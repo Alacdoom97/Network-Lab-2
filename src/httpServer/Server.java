@@ -11,6 +11,7 @@ public class Server {
 		
             @SuppressWarnings("resource")
 			ServerSocket sSocket = new ServerSocket(MYPORT);
+            System.out.println("Server is running! \n");
             while (true) {
                 Socket soc = sSocket.accept();
                 ServerThread serverThread = new ServerThread(soc);

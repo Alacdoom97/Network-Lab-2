@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 public class ServerThread extends Thread {
-	private Socket soc;
+	protected Socket soc;
 	private PrintWriter pw;
 	private BufferedReader br;
 
@@ -16,15 +16,16 @@ public class ServerThread extends Thread {
 		br = new BufferedReader(new InputStreamReader(soc.getInputStream()));
 		pw = new PrintWriter(soc.getOutputStream());
 	}
+	
+	public ServerThread() {}
 
 	@Override
 	public void run() {
 		try {
-			System.out.println("New Thread!");
 			String text = "";
 			while (br.ready() || text.length() == 0)
 				text = text + (char) br.read();
-
+			
 			System.out.println(text);
 			HttpRequest hReq = new HttpRequest(text);
 			HttpResponse hRes = new HttpResponse(hReq);
